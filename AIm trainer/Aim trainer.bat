@@ -107,6 +107,18 @@ $credits.BackColor=$dark; ^
 $credits.Visible=$false; ^
 $f.Controls.Add($credits); ^
 
+if(Test-Path $bgImagePath){ ^
+    try{ ^
+        $credits.BackgroundImage=[Drawing.Image]::FromFile($bgImagePath); ^
+        $credits.BackgroundImageLayout='Zoom' ^
+    }catch{} ^
+}; ^
+
+$creditsShade=New-Object Windows.Forms.Panel; ^
+$creditsShade.Dock='Fill'; ^
+$creditsShade.BackColor=[Drawing.Color]::FromArgb(130,5,8,14); ^
+$credits.Controls.Add($creditsShade); ^
+
 $creditsCard=New-Object Windows.Forms.Panel; ^
 $creditsCard.Width=700; ^
 $creditsCard.Height=500; ^
